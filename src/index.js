@@ -108,7 +108,7 @@ export default class VirtualList extends PureComponent {
       });
     } else if (
       scrollPropsHaveChanged ||
-      (scrollOnItemChange || nextProps.scrollToIndex) && itemPropsHaveChanged
+      (scrollOnItemChange || (nextProps.scrollToIndex && (nextProps.itemCount > 0))) && itemPropsHaveChanged
     ) {
       this.setState({
         offset: this.getOffsetForIndex(nextProps.scrollToIndex, nextProps.scrollToAlignment, nextProps.itemCount),
