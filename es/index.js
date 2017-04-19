@@ -96,10 +96,12 @@ var VirtualList = (_temp2 = _class = function (_PureComponent) {
       this.setState({
         offset: nextProps.scrollOffset
       });
-    } else if (scrollPropsHaveChanged || (scrollOnItemChange || nextProps.scrollToIndex && nextProps.itemCount > 0) && itemPropsHaveChanged) {
-      this.setState({
-        offset: this.getOffsetForIndex(nextProps.scrollToIndex, nextProps.scrollToAlignment, nextProps.itemCount)
-      });
+    } else if (scrollPropsHaveChanged || (scrollOnItemChange || nextProps.scrollToIndex) && itemPropsHaveChanged) {
+      if (nextProps.itemCount > 0) {
+        this.setState({
+          offset: this.getOffsetForIndex(nextProps.scrollToIndex, nextProps.scrollToAlignment, nextProps.itemCount)
+        });
+      }
     }
   };
 

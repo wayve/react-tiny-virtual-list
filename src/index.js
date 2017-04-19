@@ -108,11 +108,13 @@ export default class VirtualList extends PureComponent {
       });
     } else if (
       scrollPropsHaveChanged ||
-      (scrollOnItemChange || (nextProps.scrollToIndex && (nextProps.itemCount > 0))) && itemPropsHaveChanged
+      (scrollOnItemChange || nextProps.scrollToIndex) && itemPropsHaveChanged
     ) {
-      this.setState({
-        offset: this.getOffsetForIndex(nextProps.scrollToIndex, nextProps.scrollToAlignment, nextProps.itemCount),
-      });
+      if(nextProps.itemCount > 0) {
+        this.setState({
+          offset: this.getOffsetForIndex(nextProps.scrollToIndex, nextProps.scrollToAlignment, nextProps.itemCount),
+        });
+      }
     }
   }
 
